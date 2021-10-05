@@ -9,9 +9,12 @@ const TextStyle kWhiteHeader =
 const TextStyle kWhiteBody =
     TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400);
 const TextStyle kWhiteTitle =
-    TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.w400);
+    TextStyle(color: Colors.white70, fontSize: 35, fontWeight: FontWeight.w400);
 const TextStyle kBlackHeader =
     TextStyle(color: Colors.black87, fontSize: 25, fontWeight: FontWeight.w400);
 const TextStyle kBlackTitle =
     TextStyle(color: Colors.black87, fontSize: 35, fontWeight: FontWeight.w400);
 const TextStyle kYellowBody = TextStyle(color: kYellow, fontSize: 18, fontWeight: FontWeight.w400);
+
+
+//TODO: PICK A BETTER WHITE COLOR THAN COLORS.WHITE BEC ITS TOO BRIGHT
