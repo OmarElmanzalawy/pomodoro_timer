@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import '/constants.dart';
-import '/widgets/card.dart';
+import 'package:pomodoro_timer/shared/card.dart';
+import 'package:pomodoro_timer/shared/faded_title.dart';
 import '/globals.dart' as globals;
 import 'package:numberpicker/numberpicker.dart';
 import 'package:pomodoro_timer/screens/timer_screen.dart';
@@ -29,49 +30,50 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                  title: Text(
-                    'Pomodoro Timer',
-                    style: kBlackTitle,
-                  ),
-                  trailing: Stack(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey.shade900,
+                  padding: EdgeInsets.symmetric(vertical:screenSize.width*0.05,horizontal: screenSize.height*0.02),
+                  child: FadedTitle(                 
+                    child: ListTile(
+                    title: Text(
+                      'Pomodoro Timer',
+                      style: kBlackTitle,
+                    ),
+                    trailing: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey.shade900,
+                          ),
+                          child: IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Timer(),));
+                                //TODO: IMPLEMENT DONE LOGIC
+                              },
+                              icon: Icon(
+                                Icons.done_all,
+                                color: Colors.white70,
+                              )),
                         ),
-                        child: IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => Timer(),));
-                              //TODO: IMPLEMENT DONE LOGIC
-                            },
-                            icon: Icon(
-                              Icons.done_all,
-                              color: Colors.white70,
-                            )),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                    ),
                   ),
                 ),
                 Column(
                   children: [
                     CircularContainer(
-                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      margin: EdgeInsets.symmetric(horizontal: screenSize.width*0.05),
                       width: screenSize.width,
-                      height: 150,
+                      height: screenSize.height *0.18,
                       color: Colors.grey.shade900,
                       child: Column(
                         children: [
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 18.0, left: 15),
+                              padding: EdgeInsets.only(top: screenSize.height*0.02,left: screenSize.width*0.045),
                               child: Text(
                                 'Name of session:',
                                 style: kWhiteHeader,
@@ -79,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(screenSize.width*0.045),
                             child: TextField(
                               controller: nameController,
                               style: kWhiteBody,
@@ -100,15 +102,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     CircularContainer(
-                      margin: EdgeInsets.only(
-                          right: 20, left: 20, top: 10, bottom: 10),
+                      margin: EdgeInsets.symmetric(horizontal: screenSize.width*0.05,vertical: screenSize.height*0.025),
                       width: screenSize.width,
-                      height: 200,
+                      height: screenSize.height*0.27,
                       color: Colors.grey.shade900,
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(12.0),
+                            padding: EdgeInsets.all(screenSize.width*0.045),
                             child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
@@ -137,14 +138,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CircularContainer(
-                          margin: EdgeInsets.only(left: 20, right: 0),
-                          width: 200,
-                          height: 200,
+                          margin: EdgeInsets.only(left: screenSize.width*0.05, right: 0),
+                          width: screenSize.width*0.45,
+                          height: screenSize.height*0.3,
                           color: Colors.grey.shade900,
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Align(
                                 alignment: Alignment.topCenter,
@@ -165,33 +167,32 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
-                        Expanded(
-                          child: CircularContainer(
-                            margin: EdgeInsets.only(left: 10, right: 0),
-                            width: 200,
-                            height: 200,
-                            color: Colors.grey.shade900,
-                            child: Column(
-                              children: [
-                                Align(
-                                  alignment: Alignment.topCenter,
-                                  child:
-                                      Text('Long break', style: kWhiteHeader),
-                                ),
-                                NumberPicker(
-                                  value: globals.longBreak,
-                                  minValue: 10,
-                                  maxValue: 20,
-                                  step: 1,
-                                  selectedTextStyle: kYellowBody,
-                                  textStyle: kWhiteBody,
-                                  onChanged: (value) {
-                                    setState(() {});
-                                    globals.longBreak = value;
-                                  },
-                                ),
-                              ],
-                            ),
+                        CircularContainer(
+                          margin: EdgeInsets.only(left: screenSize.width*0.05,right: 0),
+                          width: screenSize.width*0.45,
+                          height: screenSize.height*0.3,
+                          color: Colors.grey.shade900,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child:
+                                    Text('Long break', style: kWhiteHeader),
+                              ),
+                              NumberPicker(
+                                value: globals.longBreak,
+                                minValue: 10,
+                                maxValue: 20,
+                                step: 1,
+                                selectedTextStyle: kYellowBody,
+                                textStyle: kWhiteBody,
+                                onChanged: (value) {
+                                  setState(() {});
+                                  globals.longBreak = value;
+                                },
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -205,4 +206,4 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-//TODO: IMPLEMENT TWEENANIMATIONBUILDER TO FADE TITLE TEXT AND PADDING
+//TODO: ADD AUDIO WHEN BUTTONS ARE PRESSED
