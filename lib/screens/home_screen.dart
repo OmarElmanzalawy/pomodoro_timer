@@ -6,6 +6,7 @@ import 'package:pomodoro_timer/shared/faded_title.dart';
 import '/globals.dart' as globals;
 import 'package:numberpicker/numberpicker.dart';
 import 'package:pomodoro_timer/screens/timer_screen.dart';
+import 'package:pomodoro_timer/shared/rounded_iconbutton.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -37,26 +38,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       'Pomodoro Timer',
                       style: kBlackTitle,
                     ),
-                    trailing: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey.shade900,
-                          ),
-                          child: IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Timer(),));
-                                //TODO: IMPLEMENT DONE LOGIC
-                              },
-                              icon: Icon(
-                                Icons.done_all,
-                                color: Colors.white70,
-                              )),
-                        ),
-                      ],
+                    trailing: RoundedIconButton(
+                      icon: Icons.done_all,
+                      onpressed: (){
+                        Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Timer(),
+                    ));
+                      },
                     ),
                     ),
                   ),
