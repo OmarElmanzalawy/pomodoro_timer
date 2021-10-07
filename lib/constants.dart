@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 const Color kYellow = Color(0xfff7c702);
+const Color kPicYellow = Color(0xffe8c303);
+const Color kActiveStreak = Color(0xffff4d32);
+const Color kInactiveStreak = Colors.black;
+const double kStreakSize = 45;
+//const EdgeInsets kStreakPadding = EdgeInsets.only(right: 8);
+EdgeInsets kStreakPadding = EdgeInsets.only(right: 12);
 const LinearGradient kBackgroundGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
