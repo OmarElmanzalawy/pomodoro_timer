@@ -22,5 +22,4 @@ const TextStyle kBlackTitle =
     TextStyle(color: Colors.black87, fontSize: 35, fontWeight: FontWeight.w400);
 const TextStyle kYellowBody = TextStyle(color: kYellow, fontSize: 18, fontWeight: FontWeight.w400);
 
-
 //TODO: PICK A BETTER WHITE COLOR THAN COLORS.WHITE BEC ITS TOO BRIGHT

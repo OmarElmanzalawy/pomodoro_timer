@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '/constants.dart';
 import 'package:pomodoro_timer/shared/card.dart';
 import 'package:pomodoro_timer/shared/faded_title.dart';
-import '/globals.dart' as globals;
+import 'package:pomodoro_timer/globals.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:pomodoro_timer/screens/timer_screen.dart';
 import 'package:pomodoro_timer/shared/rounded_iconbutton.dart';
@@ -17,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final nameController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -41,11 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     trailing: RoundedIconButton(
                       icon: Icons.done_all,
                       onpressed: (){
+                          nameController.text.isEmpty ? sessionName = 'Untitled Session' : sessionName = nameController.text;                                          
                         Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => Timer(),
-                    ));
+                    ));                                            
                       },
                     ),
                     ),
@@ -115,12 +115,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               step: 5,
                               axis: Axis.horizontal,
                               haptics: false,
-                              value: globals.sessionTime,
+                              value: sessionTime,
                               textStyle: kWhiteBody,
                               selectedTextStyle: kYellowBody,
                               onChanged: (value) {
                                 setState(() {});
-                                globals.sessionTime = value;
+                                sessionTime = value;
                               },
                             ),
                           ),
@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text('Short break', style: kWhiteHeader),
                               ),
                               NumberPicker(
-                                value: globals.shortBreak,
+                                value: shortBreak,
                                 minValue: 5,
                                 maxValue: 10,
                                 step: 1,
@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 textStyle: kWhiteBody,
                                 onChanged: (value) {
                                   setState(() {});
-                                  globals.shortBreak = value;
+                                  shortBreak = value;
                                 },
                               ),
                             ],
@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Text('Long break', style: kWhiteHeader),
                               ),
                               NumberPicker(
-                                value: globals.longBreak,
+                                value: longBreak,
                                 minValue: 10,
                                 maxValue: 20,
                                 step: 1,
@@ -179,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 textStyle: kWhiteBody,
                                 onChanged: (value) {
                                   setState(() {});
-                                  globals.longBreak = value;
+                                  longBreak = value;
                                 },
                               ),
                             ],

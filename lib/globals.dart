@@ -1,3 +1,4 @@
 int sessionTime = 30;
-int shortBreak = 5;
-int longBreak = 10;
+int shortBreak = 7;
+int longBreak = 13;
+String? sessionName;
